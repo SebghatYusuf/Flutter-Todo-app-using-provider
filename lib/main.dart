@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_test/add_screen.dart';
 import 'package:provider_test/providers/todos_model.dart';
 import 'package:provider_test/widgets/all_tasks_tab.dart';
 import 'package:provider_test/widgets/completed_tasks_tab.dart';
@@ -10,7 +11,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -47,7 +47,14 @@ class _MyHomePageState extends State<MyHomePage>
         actions: [
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddTaskScreen(),
+                ),
+              );
+            },
           ),
         ],
         bottom: TabBar(

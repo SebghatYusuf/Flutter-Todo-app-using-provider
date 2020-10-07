@@ -9,7 +9,7 @@ class TodosModel extends ChangeNotifier {
   get incompleteTasks => _tasks.where((todo) => !todo.completed).toList();
 
   void addTask(Task task) {
-    _tasks.add(task);
+    _tasks.insert(0, task);
     notifyListeners();
   }
 
