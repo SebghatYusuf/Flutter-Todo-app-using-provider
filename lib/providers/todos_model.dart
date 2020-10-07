@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider_test/models/task.dart';
 
 class TodosModel extends ChangeNotifier {
-  final List<Task> _tasks = [
-    Task(name: "Task 1"),
-    Task(name: "Task 2"),
-    Task(name: "Task 3"),
-  ];
+  final List<Task> _tasks = [];
 
   get allTasks => _tasks;
   get completedTasks => _tasks.where((todo) => todo.completed).toList();
