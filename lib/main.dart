@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => DBHelper()),
-        ChangeNotifierProxyProvider(
+        ChangeNotifierProxyProvider<DBHelper, TodosModel>(
           create: (context) => TodosModel([], dbHelper: null),
           update: (context, db, previous) =>
-              TodosModel(previous.items, dbHelper: db),
-        )
+              TodosModel(previous.allTasks, dbHelper: db),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

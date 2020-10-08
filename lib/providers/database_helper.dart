@@ -8,7 +8,7 @@ class DBHelper with ChangeNotifier {
 
   DBHelper() {
     // this will run when provider is instantiate the first time
-
+    print("DB HELPER intit");
     init();
   }
 
@@ -28,14 +28,13 @@ class DBHelper with ChangeNotifier {
     );
     notifyListeners();
   }
-Future<void> insert(String table, Map<String, dynamic> data) async{
-  await db.insert(table, data, conflictAlgorithm: sql.ConflictAlgorithm.replace);
 
+  Future<void> insert(String table, Map<String, dynamic> data) async {
+    await db.insert(table, data,
+        conflictAlgorithm: sql.ConflictAlgorithm.replace);
+  }
+
+  Future<List<Map<String, dynamic>>> getData(String table) async {
+    return await db.query(table);
+  }
 }
-Future<List<Map<String, dynamic>>> getData(String table) async {
-  return await db.query(table);
-
-}
-
-}
-
