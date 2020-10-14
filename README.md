@@ -1,6 +1,6 @@
 # Flutter Provider Todo App
 
-A Todo app for learning purpose. using sqlite and provider packges. 
+A Todo app for learning purpose using sqlite and provider packges. 
 
 ## Getting Started
 
