@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_test/add_screen.dart';
 import 'package:provider_test/providers/todos_model.dart';
+import 'package:provider_test/utils/database_helper.dart';
 import 'package:provider_test/widgets/all_tasks_tab.dart';
 import 'package:provider_test/widgets/completed_tasks_tab.dart';
 import 'package:provider_test/widgets/incomplete_tasks_tab.dart';
@@ -36,12 +37,17 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   void initState() {
+    DatabaseHelper.db.getTaskList().then((taskList) => {
+      Provider.of<TodosModel>(context,listen: false).setTasks(taskList)
+    });
     controller = TabController(vsync: this, length: 3);
     super.initState();
+    
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Todos"),
@@ -59,17 +65,18 @@ class _MyHomePageState extends State<MyHomePage>
           ),
         ],
         bottom: TabBar(
+          
           controller: controller,
           tabs: [
-            Tab(text: "All Tasks"),
             Tab(text: "Compelete Tasks"),
+            Tab(text: "All Tasks"),
             Tab(text: "Incomplete Tasks"),
           ],
         ),
       ),
       body: TabBarView(controller: controller, children: [
-        AllTasksTab(),
         CompletedTasksTab(),
+        AllTasksTab(),
         IncompleteTasksTab(),
       ]),
     );
