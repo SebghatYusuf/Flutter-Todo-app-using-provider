@@ -65,17 +65,18 @@ class _MyHomePageState extends State<MyHomePage>
           ),
         ],
         bottom: TabBar(
+          
           controller: controller,
           tabs: [
-            Tab(text: "All Tasks"),
             Tab(text: "Compelete Tasks"),
+            Tab(text: "All Tasks"),
             Tab(text: "Incomplete Tasks"),
           ],
         ),
       ),
       body: TabBarView(controller: controller, children: [
-        AllTasksTab(),
         CompletedTasksTab(),
+        AllTasksTab(),
         IncompleteTasksTab(),
       ]),
     );

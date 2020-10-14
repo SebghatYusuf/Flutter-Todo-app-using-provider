@@ -17,7 +17,7 @@ class Task {
       map['id'] = id;
     }
     map['name'] = name;
-    map['completed'] = completed ? 1 : 0;
+    map['completed'] = completed ? 0 : 1;
     return map;
   }
 
