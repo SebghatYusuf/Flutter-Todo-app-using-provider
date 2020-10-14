@@ -14,6 +14,7 @@ class DatabaseHelper {
   String colComplete = 'completed';
 
   DatabaseHelper._createInstance();
+  static final DatabaseHelper db = DatabaseHelper._createInstance();
 
   factory DatabaseHelper() {
     if (_databaseHelper == null) {
@@ -40,7 +41,7 @@ class DatabaseHelper {
   void _createDb(Database db, int newVersion) async {
     await db.execute(
         'CREATE TABLE $table($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colName TEXT, '
-        '$colComplete TEXT)');
+        '$colComplete INTEGER)');
   }
 
   Future<List<Map<String, dynamic>>> getTaskMapList() async {
@@ -57,9 +58,11 @@ class DatabaseHelper {
   }
 
   Future<int> updateTask(Task task) async {
+    print("updating task ${task.id} ${task.name} current status ${task.completed}");
     var db = await this.database;
     var result = await db
         .update(table, task.toMap(), where: '$colId = ?', whereArgs: [task.id]);
+    print("result is $result");
     return result;
   }
 

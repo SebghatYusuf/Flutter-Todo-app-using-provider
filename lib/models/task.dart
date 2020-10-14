@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 class Task {
@@ -19,20 +17,13 @@ class Task {
       map['id'] = id;
     }
     map['name'] = name;
-    map['completed'] = completed;
+    map['completed'] = completed ? 1 : 0;
     return map;
   }
 
   Task.fromMap(Map<String, dynamic> map){
     this.id = map['id'];
     this.name = map['name'];
-    this.completed = getBool(map);
-  }
-
-  bool getBool(map){
-    if (json.decode(map['completed']) == 1){
-      return true;
-    }
-    return false;
+    this.completed = map['completed'] == 1;
   }
 }

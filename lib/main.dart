@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_test/add_screen.dart';
 import 'package:provider_test/providers/todos_model.dart';
+import 'package:provider_test/utils/database_helper.dart';
 import 'package:provider_test/widgets/all_tasks_tab.dart';
 import 'package:provider_test/widgets/completed_tasks_tab.dart';
 import 'package:provider_test/widgets/incomplete_tasks_tab.dart';
@@ -36,8 +37,12 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   void initState() {
+    DatabaseHelper.db.getTaskList().then((taskList) => {
+      Provider.of<TodosModel>(context,listen: false).setTasks(taskList)
+    });
     controller = TabController(vsync: this, length: 3);
     super.initState();
+    
   }
 
   @override
