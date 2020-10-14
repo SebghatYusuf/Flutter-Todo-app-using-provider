@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => TodosModel(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'My Todo',
         theme: ThemeData.dark(),
         home: MyHomePage(),
       ),

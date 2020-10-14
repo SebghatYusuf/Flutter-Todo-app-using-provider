@@ -22,7 +22,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   void onAdd() {
     final String textVal = taskTitleController.text;
     final bool completed = completedStatus;
-    print(textVal);
     if (textVal.isNotEmpty) {
       final Task todo = Task(name: textVal, completed: completed);
       Provider.of<TodosModel>(context, listen: false).addTask(todo);
