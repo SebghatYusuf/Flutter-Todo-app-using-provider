@@ -1,6 +1,6 @@
 # Flutter Provider Todo App
 
-A new Flutter project.
+A Todo app for learning purpose. using sqlite and provider packges. 
 
 ## Getting Started
 
